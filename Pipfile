@@ -11,6 +11,8 @@ python-dotenv = "*"
 langchainhub = "*"
 black = "*"
 langchain-community = "*"
+grpcio = "==1.67.1"
+grpcio-status = "==1.67.1"
 
 [dev-packages]
 
