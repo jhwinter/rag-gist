@@ -12,9 +12,7 @@ INDEX_NAME = "medium-blogs-embeddings-index"
 
 if __name__ == "__main__":
     print("Ingesting...")
-    loader = TextLoader(
-        f"{os.environ.get('ABSOLUTE_FILE_PATH')}/mediumblog1.txt"
-    )
+    loader = TextLoader(f"{os.environ.get('ABSOLUTE_FILE_PATH')}/mediumblog1.txt")
     document = loader.load()
 
     print("splitting...")
@@ -22,12 +20,8 @@ if __name__ == "__main__":
     texts = text_splitter.split_documents(document)
     print(f"created {len(texts)} chunks")
 
-    embeddings = GoogleGenerativeAIEmbeddings(
-        model=MODEL_NAME
-    )
+    embeddings = GoogleGenerativeAIEmbeddings(model=MODEL_NAME)
 
     print("ingesting...")
-    PineconeVectorStore.from_documents(
-        texts, embeddings, index_name=INDEX_NAME
-    )
+    PineconeVectorStore.from_documents(texts, embeddings, index_name=INDEX_NAME)
     print("finish")
